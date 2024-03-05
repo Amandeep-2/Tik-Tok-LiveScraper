@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tik Tok Live Scraper</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets\tiktok.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  <link rel="stylesheet" href="assets\style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+        <img src="assets\images.png" alt="Logo" style="width:60px;" class="rounded-pill">
+        </a>
+    </div>
+</nav>
+<div class="container-fluid mt-3">
+    <div class="input-group mb-3">
+        <input type="text" id="username" class="form-control" placeholder="TikTokLive User" aria-label="TikTokLive User" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add User</button>
+    </div>
+  <div class="card" style="width:300px">
+    <img class="card-img-top" src="assets\team2.jpg" alt="Card image" style="width:100%">
+    <div class="card-body">
+        <div class="text-center">
+            <h4 id="fname" class="font-weight-bold my-2"></h4>
+            <span id='status' class="offline-status">Active</span>
+            <div class="d-flex flex-column align-items-center px-3">
+                <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                    <span>Total Current Viewer</span>
+                    <span id="currentv"  >0</span>
+                </div>
+                <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                    <span>Total Likes</span>
+                    <span id="currentl" >0</span>
+                </div>
+                <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                    <span>Total Gifts</span>
+                    <span id="currentg" >0</span>
+                </div>
+                <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                    <span>Total gifts in USD</span>
+                    <span id="currentd"  >0</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 data-info-item gap-2">
+                    <span class="text-break w-75 text-start">How much time been live in hours and minutes</span>
+                    <span id="currentt" >0</span>
+                </div>
+            </div>
+			<script>
+    document.getElementById("button-addon2").addEventListener("click", function(){
+    document.getElementById("button-addon2").setAttribute("disabled","disabled");
+});
+    </script>
+            <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                        Hourly STATS
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <div class="d-flex flex-column align-items-center px-3">
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Current Viewer</span>
+                                <span id="huserc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Likes</span>
+                                <span id="hlikc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Gifts</span>
+                                <span id="hgift"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total gifts in USD</span>
+                                <span id="hdollar"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 data-info-item gap-2">
+                                <span class="text-break w-75 text-start">How much time been live in hours and minutes</span>
+                                <span id="htime_t"  >0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                        Daily STATS
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <div class="d-flex flex-column align-items-center px-3">
+                             <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Current Viewer</span>
+                                <span id="duserc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Likes</span>
+                                <span id="dlikc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Gifts</span>
+                                <span id="dgift"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total gifts in USD</span>
+                                <span id="ddollar"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 data-info-item gap-2">
+                                <span class="text-break w-75 text-start">How much time been live in hours and minutes</span>
+                                <span id="dtime_t"  >0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        Weekly STATS
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <div class="d-flex flex-column align-items-center px-3">
+                             <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Current Viewer</span>
+                                <span id="wuserc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Likes</span>
+                                <span id="wlikc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Gifts</span>
+                                <span id="wgift"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total gifts in USD</span>
+                                <span id="wdollar"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 data-info-item gap-2">
+                                <span class="text-break w-75 text-start">How much time been live in hours and minutes</span>
+                                <span id="wtime_t"  >0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        Monthly STATS
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                    <div class="accordion-body">
+                        <div class="d-flex flex-column align-items-center px-3">
+                             <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Current Viewer</span>
+                                <span id="muserc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Likes</span>
+                                <span id="mlikc"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total Gifts</span>
+                                <span id="mgift"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3 data-info-item w-100">
+                                <span>Total gifts in USD</span>
+                                <span id="mdollar"  >0</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 data-info-item gap-2">
+                                <span class="text-break w-75 text-start">How much time been live in hours and minutes</span>
+                                <span id="mtime_t"  >0</span>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
